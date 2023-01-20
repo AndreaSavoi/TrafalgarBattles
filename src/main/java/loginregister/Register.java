@@ -8,13 +8,14 @@ import java.sql.SQLException;
 
 public class Register {
 
-    private static boolean ver;
-
     private Register() {
         throw new IllegalStateException("Utility class");
     }
 
-    public static boolean RegisterForm(String username, String password) throws SQLException {
+    public static boolean registerForm(String username, String password) throws SQLException {
+
+        boolean ver;
+
         try{
             Connection conn = DBconn.getDBConnection();
             String sql = ("INSERT INTO trafalgarbattles.login (username, password) VALUES (?, ?);");
@@ -27,7 +28,9 @@ public class Register {
             e.printStackTrace();
             ver = false;
         }
+
         DBconn.closeConnection();
+
         return ver;
     }
 

@@ -1,4 +1,4 @@
-package com.example.TrafalgarBattles.GraphicControllers;
+package com.example.TrafalgarBattles.graphicControllers;
 
 import loginregister.Login;
 import singleton.CurrentUser;
@@ -13,20 +13,25 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainGraphicController {
     @FXML
-    protected Label LogReg, login, signup, FormRes;
+    protected Label logReg;
     @FXML
-    protected Pane LRForm;
+    protected Label login;
+    @FXML
+    protected Label signup;
+    @FXML
+    protected Label formRes;
+    @FXML
+    protected Pane lrForm;
     @FXML
     protected TextField username;
     @FXML
     protected PasswordField password;
     @FXML
-    protected VBox Tournaments;
+    protected VBox tournaments;
 
 
 
@@ -36,17 +41,15 @@ public class MainGraphicController {
         List<String> nSubscribed = RetrieveInfoSpecific.retrieveNSubscribed();
         List<String> dates = RetrieveInfoSpecific.retrieveDates();
         int count = tName.size();
-        System.out.println(count);
 
         for(int i = 0; i < count; i++) {
             Pane pane = new Pane();
             pane.setPrefSize(884, 150);
             Label label = new Label();
-            String PaneId = "Info" + i;
-            pane.setId(PaneId);
+            String paneId = "Info" + i;
+            pane.setId(paneId);
             pane.setOnMouseClicked(event -> {
                 int infoN = Integer.parseInt(((Pane)event.getSource()).getId().replace("Info", ""));
-                System.out.println(infoN);
             });
             label.layoutYProperty().bind(pane.heightProperty().subtract(label.heightProperty()).divide(2));
             label.layoutXProperty().bind(pane.widthProperty().subtract(label.widthProperty()).divide(2));
@@ -54,38 +57,37 @@ public class MainGraphicController {
             label.setFont(new Font("Century Gothic", 20));
             label.setStyle("-fx-font-weight: bold italic");
             pane.getChildren().add(label);
-            Tournaments.getChildren().add(pane);
+            tournaments.getChildren().add(pane);
         }
     }
     @FXML
-    public void Show(){
-        System.out.println("Clicked!");
-        LRForm.setVisible(!LRForm.isVisible());
+    public void show(){
+        lrForm.setVisible(!lrForm.isVisible());
     }
 
     @FXML
-    public void LoginVer() throws SQLException {
+    public void loginVer() throws SQLException {
         boolean ret = Login.loginVerify(username.getText(), password.getText());
         String usr = username.getText();
         username.setText("");
         password.setText("");
         if(ret) {
-            FormRes.setText("Successfully Logged In.");
+            formRes.setText("Successfully Logged In.");
         } else {
-            FormRes.setText("Couldn't log in.");
+            formRes.setText("Couldn't log in.");
         }
         CurrentUser.getInstace(usr);
     }
 
     @FXML
-    public void SignupVer() throws SQLException {
-        boolean ret = Register.RegisterForm(username.getText(), password.getText());
+    public void signupVer() throws SQLException {
+        boolean ret = Register.registerForm(username.getText(), password.getText());
         username.setText("");
         password.setText("");
         if(ret) {
-            FormRes.setText("Successfully Registered.");
+            formRes.setText("Successfully Registered.");
         } else {
-            FormRes.setText("Couldn't register.");
+            formRes.setText("Couldn't register.");
         }
     }
 }

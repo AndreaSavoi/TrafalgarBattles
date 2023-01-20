@@ -1,4 +1,4 @@
-package com.example.TrafalgarBattles.GraphicControllers;
+package com.example.TrafalgarBattles.graphicControllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
