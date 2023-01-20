@@ -28,7 +28,6 @@ public class Register {
             e.printStackTrace();
             ver = false;
         }
-
         DBconn.closeConnection();
 
         return ver;
