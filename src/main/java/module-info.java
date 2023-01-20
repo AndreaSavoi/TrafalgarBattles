@@ -6,6 +6,6 @@ module com.example.trafalgarbattles {
     requires org.kordamp.bootstrapfx.core;
     requires mysql.connector.j;
 
-    opens com.example.TrafalgarBattles.graphiccontrollers to javafx.fxml;
-    exports com.example.TrafalgarBattles.graphiccontrollers;
+    opens com.example.trafalgarbattles.graphiccontrollers to javafx.fxml;
+    exports com.example.trafalgarbattles.graphiccontrollers;
 }
