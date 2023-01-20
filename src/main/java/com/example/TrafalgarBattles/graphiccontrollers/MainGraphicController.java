@@ -1,4 +1,4 @@
-package com.example.TrafalgarBattles.graphicControllers;
+package com.example.TrafalgarBattles.graphiccontrollers;
 
 import loginregister.Login;
 import singleton.CurrentUser;
