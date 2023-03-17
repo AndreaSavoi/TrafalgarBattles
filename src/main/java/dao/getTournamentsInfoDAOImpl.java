@@ -23,7 +23,7 @@ public class getTournamentsInfoDAOImpl implements getTournamentsInfoDAO{
         }
     }
 
-    public getTournamentsInfoDAOImpl() throws SQLException {
+    public getTournamentsInfoDAOImpl() {
         conn = DBconn.getDBConnection();
     }
 

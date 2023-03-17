@@ -8,7 +8,9 @@ public class beanCurrTourn {
     private String nSubscribed;
     private String dates;
 
-    public beanCurrTourn() {}
+    public beanCurrTourn() {
+        throw new UnsupportedOperationException();
+    }
 
     public static beanCurrTourn getInstance() {
         if (instance == null) {
@@ -19,8 +21,6 @@ public class beanCurrTourn {
 
     public void setSno(int sno) {
         this.sno = sno;
-
-        System.out.println(this.sno);
     }
 
     public void settName(String tName) { this.tName = tName; }

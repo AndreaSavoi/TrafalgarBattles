@@ -13,7 +13,7 @@ public class ApplicationControllerLogReg {
 
     private final String password;
 
-    public ApplicationControllerLogReg(beanLog bL) throws Exception {
+    public ApplicationControllerLogReg(beanLog bL) {
         if(bL == null) {
             throw new IllegalArgumentException("Bean cannot be null");
         }
@@ -21,8 +21,7 @@ public class ApplicationControllerLogReg {
         username = bL.getUsername();
         password = bL.getPassword();
 
-        if(bL instanceof beanReg) {
-            beanReg bR = (beanReg) bL;
+        if(bL instanceof beanReg bR) {
             email = bR.getEmail();
             register();
         } else {
@@ -30,18 +29,21 @@ public class ApplicationControllerLogReg {
         }
     }
 
-    public void verify() throws Exception {
-        logRegDAOImpl logDao = new logRegDAOImpl();
-        if(logDao.getLogInfo(username, password)) {
-            return;
+    public void verify() {
+        try {
+            logRegDAOImpl logDao = new logRegDAOImpl();
+            logDao.getLogInfo(username, password);
+        } catch (SQLException e){
+            e.printStackTrace();
         }
-        throw new Exception("Not existing account");
     }
 
-    public void register() throws Exception {
-        logRegDAOImpl regDAO = new logRegDAOImpl();
-        if(!regDAO.Register(email, username, password)) {
-            throw new Exception("Account already exists");
+    public void register() {
+        try{
+            logRegDAOImpl regDAO = new logRegDAOImpl();
+            regDAO.Register(email, username, password);
+        } catch (SQLException e){
+            e.printStackTrace();
         }
     }
 }

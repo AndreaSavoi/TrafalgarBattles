@@ -1,22 +1,19 @@
 package applicationControllers;
 
 import bean.tournamentList;
-import dao.getTournamentsInfoDAO;
 import dao.getTournamentsInfoDAOImpl;
-import javafx.scene.image.Image;
-
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ApplicationControllerMainPage {
-    public List<String> tName = new ArrayList<>();
-    public List<String> nPartecipants = new ArrayList<>();
-    public List<String> nSubscribed = new ArrayList<>();
-    public List<String> dates = new ArrayList<>();
-    public List<String> sno = new ArrayList<>();
-    public List<InputStream> logos = new ArrayList<>();
+    private List<String> tName = new ArrayList<>();
+    private List<String> nPartecipants = new ArrayList<>();
+    private List<String> nSubscribed = new ArrayList<>();
+    private List<String> dates = new ArrayList<>();
+    private List<String> sno = new ArrayList<>();
+    private List<InputStream> logos = new ArrayList<>();
     private getTournamentsInfoDAOImpl getTournamentsInfoDAO;
 
     public ApplicationControllerMainPage(tournamentList tL) throws SQLException {

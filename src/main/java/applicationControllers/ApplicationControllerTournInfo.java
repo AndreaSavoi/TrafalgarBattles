@@ -11,8 +11,8 @@ public class ApplicationControllerTournInfo {
 
     List<String> curr = new ArrayList<>();
     private getTournamentsInfoDAOImpl getCurrTurnInfo;
-    public ApplicationControllerTournInfo(beanCurrTourn bCT, String username, String tname) throws SQLException {
-        addSub(bCT, username, tname);
+    public ApplicationControllerTournInfo(String username, String tname) throws SQLException {
+        addSub(username, tname);
     }
     public ApplicationControllerTournInfo(beanCurrTourn bCT) throws SQLException {
         addDatas(bCT);
@@ -27,7 +27,7 @@ public class ApplicationControllerTournInfo {
         bCT.setDates(curr.get(3));
     }
 
-    private void addSub(beanCurrTourn bCT, String username, String tname) throws SQLException {
+    private void addSub(String username, String tname) throws SQLException {
         getCurrTurnInfo = new getTournamentsInfoDAOImpl();
         getCurrTurnInfo.addSub(username, tname);
     }

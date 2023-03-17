@@ -13,7 +13,6 @@ public class CurrentUser {
         if(instance == null) {
             instance = new CurrentUser(userName);
         }
-        System.out.println(userName);
         return instance;
     }
 

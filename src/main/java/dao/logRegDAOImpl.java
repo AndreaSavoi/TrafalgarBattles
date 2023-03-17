@@ -35,7 +35,7 @@ public class logRegDAOImpl implements logRegDAO{
         stmt.setString(1, username);
         stmt.setString(2, password);
         rs = stmt.executeQuery();
-        while (rs.next()){
+        if(rs.next()){
             CurrentUser.getInstace(username);
             return true;
         }
