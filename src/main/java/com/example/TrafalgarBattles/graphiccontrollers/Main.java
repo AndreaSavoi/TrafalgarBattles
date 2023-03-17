@@ -10,11 +10,10 @@ import java.sql.SQLException;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws IOException, SQLException {
+    public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
-        ((MainGraphicController)fxmlLoader.getController()).init();
         stage.show();
     }
 

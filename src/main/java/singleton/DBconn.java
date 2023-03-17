@@ -24,7 +24,13 @@ public class DBconn {
     }
 
     public static void closeConnection() throws SQLException {
-        conn.close();
-        conn = null;
+        if(conn != null) {
+            try{
+                conn.close();
+                conn = null;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

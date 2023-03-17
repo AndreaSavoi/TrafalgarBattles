@@ -1,26 +1,28 @@
 package singleton;
 
-public final class CurrentUser {
+public class CurrentUser {
 
     private static CurrentUser instance;
-
-    private final String userName;
+    private static String username;
 
     private CurrentUser(String username) {
-        this.userName = username;
+        this.username = username;
     }
 
     public static CurrentUser getInstace(String userName) {
         if(instance == null) {
             instance = new CurrentUser(userName);
         }
+        System.out.println(userName);
         return instance;
     }
+
+    public static String getUser() { return username; }
 
     @Override
     public String toString() {
         return "UserSession{" +
-                "userName='" + userName + '\''+
+                "userName='" + username + '\''+
                 '}';
     }
 }
