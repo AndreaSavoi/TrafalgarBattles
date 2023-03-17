@@ -1,7 +1,7 @@
-package applicationControllers;
+package applicationcontrollers;
 
-import bean.tournamentList;
-import dao.getTournamentsInfoDAOImpl;
+import bean.BeanTournList;
+import dao.TournInfoDAOImpl;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,15 +14,15 @@ public class ApplicationControllerMainPage {
     private List<String> dates = new ArrayList<>();
     private List<String> sno = new ArrayList<>();
     private List<InputStream> logos = new ArrayList<>();
-    private getTournamentsInfoDAOImpl getTournamentsInfoDAO;
+    private TournInfoDAOImpl getTournamentsInfoDAO;
 
-    public ApplicationControllerMainPage(tournamentList tL) throws SQLException {
+    public ApplicationControllerMainPage(BeanTournList tL) throws SQLException {
         addDatas(tL);
     }
 
-    private void addDatas(tournamentList tL) throws SQLException {
+    private void addDatas(BeanTournList tL) throws SQLException {
 
-        getTournamentsInfoDAO = new getTournamentsInfoDAOImpl();
+        getTournamentsInfoDAO = new TournInfoDAOImpl();
         getTournamentsInfoDAO.getInfo(tName, nPartecipants, nSubscribed, dates, sno, logos);
 
         int counter = sno.size();

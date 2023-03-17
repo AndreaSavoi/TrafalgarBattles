@@ -1,20 +1,16 @@
 package com.example.trafalgarbattles.graphiccontrollers;
 
-import applicationControllers.ApplicationControllerLogReg;
-import bean.beanLog;
-import bean.beanReg;
+import applicationcontrollers.ApplicationControllerLogReg;
+import bean.BeanLog;
+import bean.BeanReg;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import singleton.CurrentUser;
-
-import java.io.IOException;
 import java.sql.SQLException;
 
 public class LogRegFormController {
@@ -33,16 +29,16 @@ public class LogRegFormController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader root;
-    private beanLog bL;
+    private BeanLog bL;
 
-    private final visualizeScene visualizer = visualizeScene.getVisualizer(null);
+    private final VisualizeScene visualizer = VisualizeScene.getVisualizer(null);
 
     @FXML
     public void loginVer() throws SQLException {
         if(usernameL.getText().isEmpty() || passwordL.getText().isEmpty()){
             formRes.setText("Invalid password/username");
         } else {
-            bL = new beanLog(usernameL.getText(), passwordL.getText());
+            bL = new BeanLog(usernameL.getText(), passwordL.getText());
             try{
                 new ApplicationControllerLogReg(bL);
                 passwordL.setDisable(true);
@@ -62,7 +58,7 @@ public class LogRegFormController {
         if(usernameR.getText().isEmpty() || passwordR.getText().isEmpty() || email.getText().isEmpty() || !email.getText().contains("@")){
             formRes.setText("Invalid credentials, please try again");
         } else {
-            beanReg bR = new beanReg(email.getText(), usernameR.getText(), passwordR.getText());
+            BeanReg bR = new BeanReg(email.getText(), usernameR.getText(), passwordR.getText());
             try{
                 new ApplicationControllerLogReg(bR);
                 email.setDisable(true);

@@ -1,20 +1,19 @@
 package bean;
 
-public class beanCurrTourn {
-    private static beanCurrTourn instance;
+public class BeanCurrTourn {
+    private static BeanCurrTourn instance;
     private int sno;
     private String tName;
     private String nPartecipants;
     private String nSubscribed;
     private String dates;
 
-    public beanCurrTourn() {
-        throw new UnsupportedOperationException();
+    public BeanCurrTourn() {
     }
 
-    public static beanCurrTourn getInstance() {
+    public static BeanCurrTourn getInstance() {
         if (instance == null) {
-            instance = new beanCurrTourn();
+            instance = new BeanCurrTourn();
         }
         return instance;
     }

@@ -1,10 +1,9 @@
 package com.example.trafalgarbattles.graphiccontrollers;
 
-import applicationControllers.ApplicationControllerMainPage;
-import bean.beanCurrTourn;
-import bean.tournamentList;
+import applicationcontrollers.ApplicationControllerMainPage;
+import bean.BeanCurrTourn;
+import bean.BeanTournList;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -30,7 +29,7 @@ public class MainGraphicController implements Initializable{
     private Scene scene;
     private FXMLLoader root;
     private String tabs = "\t\t\t\t";
-    private final visualizeScene visualizer = visualizeScene.getVisualizer(null);
+    private final VisualizeScene visualizer = VisualizeScene.getVisualizer(null);
     @FXML
     protected VBox tournaments;
     @FXML
@@ -44,7 +43,7 @@ public class MainGraphicController implements Initializable{
             logReg.setText(CurrentUser.getUser());
         }
         try {
-            tournamentList tL = new tournamentList();
+            BeanTournList tL = new BeanTournList();
             new ApplicationControllerMainPage(tL);
             int count = tL.sno.size();
 
@@ -56,7 +55,7 @@ public class MainGraphicController implements Initializable{
                 pane.setId(paneId);
                 pane.setOnMouseClicked(event -> {
                     int infoN = Integer.parseInt(((Pane) event.getSource()).getId().replace("Info", ""));
-                    beanCurrTourn tournament = beanCurrTourn.getInstance();
+                    BeanCurrTourn tournament = BeanCurrTourn.getInstance();
                     tournament.setSno(infoN);
                     visualizer.sceneVisualizer("TournamentInfo.fxml", event);
                 });

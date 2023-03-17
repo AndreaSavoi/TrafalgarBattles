@@ -7,24 +7,25 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Objects;
 
-public class visualizeScene {
-    private static visualizeScene visualizer = null;
+public class VisualizeScene {
+    private static VisualizeScene visualizer = null;
 
     private static Stage stage;
 
-    private visualizeScene() {}
+    private VisualizeScene() {}
 
-    public static visualizeScene getVisualizer(Stage newS) {
+    public static VisualizeScene getVisualizer(Stage newS) {
         if(visualizer==null) {
-            visualizer = new visualizeScene();
+            visualizer = new VisualizeScene();
             stage = newS;
         }
         return visualizer;
     }
 
-    public void mainVisualizer(String sName) throws Exception {
+    public void mainVisualizer(String sName) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(sName));
         Scene scene = new Scene(loader.load());
         stage.setResizable(false);
@@ -34,7 +35,7 @@ public class visualizeScene {
 
     public static void sceneVisualizer(String sName, MouseEvent event) {
         try{
-            Parent loader = FXMLLoader.load(Objects.requireNonNull(visualizeScene.class.getResource(sName)));
+            Parent loader = FXMLLoader.load(Objects.requireNonNull(VisualizeScene.class.getResource(sName)));
             Scene scene = new Scene(loader);
             if(event != null) {
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

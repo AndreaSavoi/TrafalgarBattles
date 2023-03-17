@@ -1,8 +1,8 @@
-package applicationControllers;
+package applicationcontrollers;
 
-import bean.beanLog;
-import bean.beanReg;
-import dao.logRegDAOImpl;
+import bean.BeanLog;
+import bean.BeanReg;
+import dao.LogRegDAOImpl;
 
 import java.sql.SQLException;
 
@@ -13,7 +13,7 @@ public class ApplicationControllerLogReg {
 
     private final String password;
 
-    public ApplicationControllerLogReg(beanLog bL) {
+    public ApplicationControllerLogReg(BeanLog bL) {
         if(bL == null) {
             throw new IllegalArgumentException("Bean cannot be null");
         }
@@ -21,7 +21,7 @@ public class ApplicationControllerLogReg {
         username = bL.getUsername();
         password = bL.getPassword();
 
-        if(bL instanceof beanReg bR) {
+        if(bL instanceof BeanReg bR) {
             email = bR.getEmail();
             register();
         } else {
@@ -31,7 +31,7 @@ public class ApplicationControllerLogReg {
 
     public void verify() {
         try {
-            logRegDAOImpl logDao = new logRegDAOImpl();
+            LogRegDAOImpl logDao = new LogRegDAOImpl();
             logDao.getLogInfo(username, password);
         } catch (SQLException e){
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class ApplicationControllerLogReg {
 
     public void register() {
         try{
-            logRegDAOImpl regDAO = new logRegDAOImpl();
+            LogRegDAOImpl regDAO = new LogRegDAOImpl();
             regDAO.Register(email, username, password);
         } catch (SQLException e){
             e.printStackTrace();

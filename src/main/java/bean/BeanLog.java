@@ -1,11 +1,11 @@
 package bean;
 
-public class beanLog {
+public class BeanLog {
     private String username;
 
     private String password;
 
-    public beanLog(String username, String password) {
+    public BeanLog(String username, String password) {
         this.username = username;
         this.password = password;
     }

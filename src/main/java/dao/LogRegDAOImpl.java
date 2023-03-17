@@ -1,6 +1,6 @@
 package dao;
 
-import queries.queries;
+import queries.Queries;
 import singleton.CurrentUser;
 import singleton.DBconn;
 
@@ -9,21 +9,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class logRegDAOImpl implements logRegDAO{
+public class LogRegDAOImpl implements LogRegDAO {
 
-    private Connection conn;
+    private final Connection conn;
 
     private PreparedStatement stmt;
 
-    private ResultSet rs;
-
-    private void connVerify() throws SQLException {
+    private void connVerify() {
         if(conn == null) {
             DBconn.getDBConnection();
         }
     }
 
-    public logRegDAOImpl() throws SQLException {
+    public LogRegDAOImpl() throws SQLException {
         conn = DBconn.getDBConnection();
     }
 
@@ -31,10 +29,10 @@ public class logRegDAOImpl implements logRegDAO{
     public boolean getLogInfo(String username, String password) throws SQLException {
         connVerify();
 
-        stmt = conn.prepareStatement(queries.getQueryLogin());
+        stmt = conn.prepareStatement(Queries.getQueryLogin());
         stmt.setString(1, username);
         stmt.setString(2, password);
-        rs = stmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         if(rs.next()){
             CurrentUser.getInstace(username);
             return true;
@@ -47,7 +45,7 @@ public class logRegDAOImpl implements logRegDAO{
         connVerify();
 
         try {
-            stmt = conn.prepareStatement(queries.getRegisterUser());
+            stmt = conn.prepareStatement(Queries.getRegisterUser());
             stmt.setString(1, username);
             stmt.setString(2, password);
             stmt.setString(3, email);

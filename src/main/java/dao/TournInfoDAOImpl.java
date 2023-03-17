@@ -1,8 +1,6 @@
 package dao;
 
-import bean.beanCurrTourn;
-import javafx.scene.image.Image;
-import queries.queries;
+import queries.Queries;
 import singleton.DBconn;
 
 import java.io.InputStream;
@@ -12,18 +10,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class getTournamentsInfoDAOImpl implements getTournamentsInfoDAO{
-    private Connection conn;
+public class TournInfoDAOImpl implements TournInfoDAO {
+    private final Connection conn;
     private PreparedStatement stmt;
     private ResultSet rs;
 
-    private void connVerify() throws SQLException {
+    private void connVerify() {
         if(conn == null) {
             DBconn.getDBConnection();
         }
     }
 
-    public getTournamentsInfoDAOImpl() {
+    public TournInfoDAOImpl() {
         conn = DBconn.getDBConnection();
     }
 
@@ -31,7 +29,7 @@ public class getTournamentsInfoDAOImpl implements getTournamentsInfoDAO{
     public void getInfo(List<String> tName, List<String> nPartecipants, List<String> nSubscribed, List<String> dates, List<String> sno, List<InputStream> logos) throws SQLException {
         connVerify();
 
-        stmt = conn.prepareStatement(queries.getQueryAllTournaments());
+        stmt = conn.prepareStatement(Queries.getQueryAllTournaments());
         rs = stmt.executeQuery();
         while(rs.next()){
             tName.add(rs.getString("tname"));
@@ -46,7 +44,7 @@ public class getTournamentsInfoDAOImpl implements getTournamentsInfoDAO{
     public void getSpecific(List<String> curr, int sno) throws SQLException {
         connVerify();
 
-        stmt = conn.prepareStatement(queries.getQueryCurrTourn());
+        stmt = conn.prepareStatement(Queries.getQueryCurrTourn());
         stmt.setInt(1, sno);
         rs = stmt.executeQuery();
         while(rs.next()) {
@@ -60,7 +58,7 @@ public class getTournamentsInfoDAOImpl implements getTournamentsInfoDAO{
     public void addSub(String username, String tname) throws SQLException {
         connVerify();
 
-        stmt = conn.prepareStatement(queries.getQueryAddSub());
+        stmt = conn.prepareStatement(Queries.getQueryAddSub());
         stmt.setString(1, username);
         stmt.setString(2, tname);
         stmt.executeUpdate();

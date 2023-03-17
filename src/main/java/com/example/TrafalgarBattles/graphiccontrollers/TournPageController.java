@@ -1,12 +1,10 @@
 package com.example.trafalgarbattles.graphiccontrollers;
 
-import applicationControllers.ApplicationControllerTournInfo;
-import bean.beanCurrTourn;
-import bean.tournamentList;
+import applicationcontrollers.ApplicationControllerTournInfo;
+import bean.BeanCurrTourn;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,17 +12,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import singleton.CurrentUser;
-import singleton.DBconn;
 
-import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class tournamentPageController implements Initializable {
+public class TournPageController implements Initializable {
     @FXML
     protected Label logReg;
     @FXML
@@ -39,7 +32,7 @@ public class tournamentPageController implements Initializable {
     protected Label homeB;
     @FXML
     protected Button register;
-    private final visualizeScene visualizer = visualizeScene.getVisualizer(null);
+    private final VisualizeScene visualizer = VisualizeScene.getVisualizer(null);
     FXMLLoader root;
     Stage stage;
     Scene scene;
@@ -54,7 +47,7 @@ public class tournamentPageController implements Initializable {
 
     public void sub(MouseEvent event) throws SQLException {
         if(CurrentUser.getUser() != null) {
-            beanCurrTourn bCT = beanCurrTourn.getInstance();
+            BeanCurrTourn bCT = BeanCurrTourn.getInstance();
             new ApplicationControllerTournInfo(CurrentUser.getUser(), bCT.gettName());
         }
     }
@@ -74,7 +67,7 @@ public class tournamentPageController implements Initializable {
         } else {
             register.setTextFill(Color.RED);
         }
-        beanCurrTourn bCT = beanCurrTourn.getInstance();
+        BeanCurrTourn bCT = BeanCurrTourn.getInstance();
         try {
             new ApplicationControllerTournInfo(bCT);
         } catch (SQLException e) {

@@ -1,7 +1,7 @@
 package queries;
 
-public class queries {
-    private queries(){}
+public class Queries {
+    private Queries(){}
 
     static final String queryLogin= "SELECT * FROM trafalgarbattles.login WHERE username = ? and password = ?";
 

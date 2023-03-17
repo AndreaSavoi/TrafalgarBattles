@@ -1,12 +1,10 @@
 package bean;
 
-import javafx.scene.image.Image;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class tournamentList {
+public class BeanTournList {
     public final List<String> tName;
     public final List<String> nPartecipants;
     public final List<String> nSubscribed;
@@ -14,7 +12,7 @@ public class tournamentList {
     public final List<String> sno;
     public final List<InputStream> logos;
 
-    public tournamentList() {
+    public BeanTournList() {
         tName = new ArrayList<>();
         nPartecipants = new ArrayList<>();
         nSubscribed = new ArrayList<>();
