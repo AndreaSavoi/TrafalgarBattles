@@ -42,13 +42,11 @@ public class MainGraphicController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(CurrentUser.getUser() != null) {
             logReg.setText(CurrentUser.getUser());
-            //logReg.setOnMouseClicked(this::show);
         }
         try {
             tournamentList tL = new tournamentList();
             new ApplicationControllerMainPage(tL);
             int count = tL.sno.size();
-            System.out.println(count);
 
             for (int i = 0; i < count; i++) {
                 Pane pane = new Pane();

@@ -44,7 +44,7 @@ public class LogRegFormController {
         } else {
             bL = new beanLog(usernameL.getText(), passwordL.getText());
             try{
-                ApplicationControllerLogReg applLog = new ApplicationControllerLogReg(bL);
+                new ApplicationControllerLogReg(bL);
                 passwordL.setDisable(true);
                 usernameL.setDisable(true);
                 email.setDisable(true);
@@ -58,13 +58,13 @@ public class LogRegFormController {
     }
 
     @FXML
-    public void signupVer() throws SQLException {
+    public void signupVer(){
         if(usernameR.getText().isEmpty() || passwordR.getText().isEmpty() || email.getText().isEmpty() || !email.getText().contains("@")){
             formRes.setText("Invalid credentials, please try again");
         } else {
             beanReg bR = new beanReg(email.getText(), usernameR.getText(), passwordR.getText());
             try{
-                ApplicationControllerLogReg applReg = new ApplicationControllerLogReg(bR);
+                new ApplicationControllerLogReg(bR);
                 email.setDisable(true);
                 passwordR.setDisable(true);
                 usernameR.setDisable(true);
@@ -75,7 +75,7 @@ public class LogRegFormController {
         }
     }
 
-    public void returnHome(MouseEvent event) throws SQLException {
+    public void returnHome(MouseEvent event){
         visualizer.sceneVisualizer("Mainview.fxml", event);
     }
 }

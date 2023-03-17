@@ -32,9 +32,9 @@ public class visualizeScene {
         stage.show();
     }
 
-    public void sceneVisualizer(String sName, MouseEvent event) {
+    public static void sceneVisualizer(String sName, MouseEvent event) {
         try{
-            Parent loader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(sName)));
+            Parent loader = FXMLLoader.load(Objects.requireNonNull(visualizeScene.class.getResource(sName)));
             Scene scene = new Scene(loader);
             if(event != null) {
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

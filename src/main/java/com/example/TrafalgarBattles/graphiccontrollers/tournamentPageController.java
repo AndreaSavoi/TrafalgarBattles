@@ -55,9 +55,7 @@ public class tournamentPageController implements Initializable {
     public void sub(MouseEvent event) throws SQLException {
         if(CurrentUser.getUser() != null) {
             beanCurrTourn bCT = beanCurrTourn.getInstance();
-            new ApplicationControllerTournInfo(bCT, CurrentUser.getUser(), bCT.gettName());
-        } else {
-            System.out.println("not registered");
+            new ApplicationControllerTournInfo(CurrentUser.getUser(), bCT.gettName());
         }
     }
 
@@ -80,7 +78,7 @@ public class tournamentPageController implements Initializable {
         try {
             new ApplicationControllerTournInfo(bCT);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         tName.setText(bCT.gettName());
         date.setText(bCT.getDates());
