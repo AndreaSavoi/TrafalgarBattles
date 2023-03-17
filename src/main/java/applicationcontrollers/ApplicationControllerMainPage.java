@@ -2,6 +2,8 @@ package applicationcontrollers;
 
 import bean.BeanTournList;
 import dao.TournInfoDAOImpl;
+
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,11 +18,11 @@ public class ApplicationControllerMainPage {
     private List<InputStream> logos = new ArrayList<>();
     private TournInfoDAOImpl getTournamentsInfoDAO;
 
-    public ApplicationControllerMainPage(BeanTournList tL) throws SQLException {
+    public ApplicationControllerMainPage(BeanTournList tL) throws SQLException, IOException {
         addDatas(tL);
     }
 
-    private void addDatas(BeanTournList tL) throws SQLException {
+    private void addDatas(BeanTournList tL) throws SQLException, IOException {
 
         getTournamentsInfoDAO = new TournInfoDAOImpl();
         getTournamentsInfoDAO.getInfo(tName, nPartecipants, nSubscribed, dates, sno, logos);

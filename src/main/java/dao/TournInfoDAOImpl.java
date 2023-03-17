@@ -3,6 +3,7 @@ package dao;
 import queries.Queries;
 import singleton.DBconn;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,18 +16,18 @@ public class TournInfoDAOImpl implements TournInfoDAO {
     private PreparedStatement stmt;
     private ResultSet rs;
 
-    private void connVerify() {
+    private void connVerify() throws IOException {
         if(conn == null) {
             DBconn.getDBConnection();
         }
     }
 
-    public TournInfoDAOImpl() {
+    public TournInfoDAOImpl() throws IOException {
         conn = DBconn.getDBConnection();
     }
 
     @Override
-    public void getInfo(List<String> tName, List<String> nPartecipants, List<String> nSubscribed, List<String> dates, List<String> sno, List<InputStream> logos) throws SQLException {
+    public void getInfo(List<String> tName, List<String> nPartecipants, List<String> nSubscribed, List<String> dates, List<String> sno, List<InputStream> logos) throws SQLException, IOException {
         connVerify();
 
         stmt = conn.prepareStatement(Queries.getQueryAllTournaments());
@@ -41,7 +42,7 @@ public class TournInfoDAOImpl implements TournInfoDAO {
         }
     }
 
-    public void getSpecific(List<String> curr, int sno) throws SQLException {
+    public void getSpecific(List<String> curr, int sno) throws SQLException, IOException {
         connVerify();
 
         stmt = conn.prepareStatement(Queries.getQueryCurrTourn());
@@ -55,7 +56,7 @@ public class TournInfoDAOImpl implements TournInfoDAO {
         }
     }
 
-    public void addSub(String username, String tname) throws SQLException {
+    public void addSub(String username, String tname) throws SQLException, IOException {
         connVerify();
 
         stmt = conn.prepareStatement(Queries.getQueryAddSub());

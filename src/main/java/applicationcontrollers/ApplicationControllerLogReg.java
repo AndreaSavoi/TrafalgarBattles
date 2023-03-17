@@ -4,6 +4,7 @@ import bean.BeanLog;
 import bean.BeanReg;
 import dao.LogRegDAOImpl;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class ApplicationControllerLogReg {
@@ -33,7 +34,7 @@ public class ApplicationControllerLogReg {
         try {
             LogRegDAOImpl logDao = new LogRegDAOImpl();
             logDao.getLogInfo(username, password);
-        } catch (SQLException e){
+        } catch (SQLException | IOException e){
             e.printStackTrace();
         }
     }
@@ -43,6 +44,8 @@ public class ApplicationControllerLogReg {
             LogRegDAOImpl regDAO = new LogRegDAOImpl();
             regDAO.Register(email, username, password);
         } catch (SQLException e){
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

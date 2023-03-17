@@ -4,6 +4,7 @@ import queries.Queries;
 import singleton.CurrentUser;
 import singleton.DBconn;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,18 +16,18 @@ public class LogRegDAOImpl implements LogRegDAO {
 
     private PreparedStatement stmt;
 
-    private void connVerify() {
+    private void connVerify() throws IOException {
         if(conn == null) {
             DBconn.getDBConnection();
         }
     }
 
-    public LogRegDAOImpl() throws SQLException {
+    public LogRegDAOImpl() throws SQLException, IOException {
         conn = DBconn.getDBConnection();
     }
 
     @Override
-    public boolean getLogInfo(String username, String password) throws SQLException {
+    public boolean getLogInfo(String username, String password) throws SQLException, IOException {
         connVerify();
 
         stmt = conn.prepareStatement(Queries.getQueryLogin());
@@ -41,7 +42,7 @@ public class LogRegDAOImpl implements LogRegDAO {
     }
 
     @Override
-    public boolean Register(String email, String username, String password) throws SQLException {
+    public boolean Register(String email, String username, String password) throws SQLException, IOException {
         connVerify();
 
         try {

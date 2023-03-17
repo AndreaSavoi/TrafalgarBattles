@@ -1,8 +1,13 @@
 package singleton;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DBconn {
 
@@ -10,11 +15,14 @@ public class DBconn {
 
     private DBconn() {}
 
-    public static Connection getDBConnection() {
+    public static Connection getDBConnection() throws IOException {
+        Properties properties = new Properties();
+        InputStream IS= new FileInputStream("application.properties");
+        properties.load(IS);
         try{
             if(conn == null) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost/trafalgarbattles", "root", "Andr3a0m1x7302");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost/trafalgarbattles", "root", (String) properties.get("password"));
             }
         } catch (Exception e) {
             e.printStackTrace();
