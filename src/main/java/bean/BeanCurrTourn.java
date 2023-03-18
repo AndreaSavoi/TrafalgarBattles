@@ -9,6 +9,7 @@ public class BeanCurrTourn {
     private String dates;
 
     public BeanCurrTourn() {
+        //Costruttore
     }
 
     public static BeanCurrTourn getInstance() {

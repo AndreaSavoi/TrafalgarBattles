@@ -3,16 +3,14 @@ package com.example.trafalgarbattles.graphiccontrollers;
 import applicationcontrollers.ApplicationControllerTournInfo;
 import bean.BeanCurrTourn;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import singleton.CurrentUser;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -33,11 +31,7 @@ public class TournPageController implements Initializable {
     @FXML
     protected Button register;
     private final VisualizeScene visualizer = VisualizeScene.getVisualizer(null);
-    FXMLLoader root;
-    Stage stage;
-    Scene scene;
-
-    public void goLog(MouseEvent event) throws SQLException {
+    public void goLog(MouseEvent event){
         visualizer.sceneVisualizer("LogRegForm.fxml", event);
     }
 
@@ -45,7 +39,7 @@ public class TournPageController implements Initializable {
         visualizer.sceneVisualizer("MainView.fxml", event);
     }
 
-    public void sub(MouseEvent event) throws SQLException {
+    public void sub(MouseEvent event) throws SQLException, IOException {
         if(CurrentUser.getUser() != null) {
             BeanCurrTourn bCT = BeanCurrTourn.getInstance();
             new ApplicationControllerTournInfo(CurrentUser.getUser(), bCT.gettName());
@@ -70,7 +64,7 @@ public class TournPageController implements Initializable {
         BeanCurrTourn bCT = BeanCurrTourn.getInstance();
         try {
             new ApplicationControllerTournInfo(bCT);
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
         tName.setText(bCT.gettName());

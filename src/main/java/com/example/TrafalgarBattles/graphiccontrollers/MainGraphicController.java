@@ -3,21 +3,19 @@ package com.example.trafalgarbattles.graphiccontrollers;
 import applicationcontrollers.ApplicationControllerMainPage;
 import bean.BeanCurrTourn;
 import bean.BeanTournList;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import singleton.CurrentUser;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -25,10 +23,6 @@ import java.util.ResourceBundle;
 public class MainGraphicController implements Initializable{
     @FXML
     protected Label logReg;
-    private Stage stage;
-    private Scene scene;
-    private FXMLLoader root;
-    private String tabs = "\t\t\t\t";
     private final VisualizeScene visualizer = VisualizeScene.getVisualizer(null);
     @FXML
     protected VBox tournaments;
@@ -67,6 +61,7 @@ public class MainGraphicController implements Initializable{
                 ImageView logo = new ImageView(img);
                 logo.setPreserveRatio(true);
                 logo.setFitHeight(hbox.getPrefHeight());
+                String tabs = "\t\t\t\t";
                 label.setText(tL.getName(i) + tabs + tL.getNS(i) + "/" + tL.getNP(i) + tabs + tL.getDate(i) + tabs);
                 label.setFont(new Font("Century Gothic", 20));
                 label.setStyle("-fx-font-weight: bold italic");
@@ -89,6 +84,8 @@ public class MainGraphicController implements Initializable{
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
