@@ -3,7 +3,7 @@ package applicationcontrollers;
 public class CurrentUser {
     private static String username;
 
-    public CurrentUser(String username) {
+    public CurrentUser() {
         //costruttore
     }
 
