@@ -4,7 +4,7 @@ public class CurrentUser {
     private static String username;
 
     public CurrentUser(String username) {
-        this.username = username;
+        CurrentUser.username = username;
     }
 
 

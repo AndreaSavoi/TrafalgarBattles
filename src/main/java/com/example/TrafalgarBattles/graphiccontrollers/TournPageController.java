@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import singleton.CurrentUser;
+import applicationcontrollers.CurrentUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +34,7 @@ public class TournPageController implements Initializable {
     public void goLog(MouseEvent event){
         visualizer.sceneVisualizer("LogRegForm.fxml", event);
     }
+
 
     public void goHome(MouseEvent event) throws SQLException {
         visualizer.sceneVisualizer("MainView.fxml", event);

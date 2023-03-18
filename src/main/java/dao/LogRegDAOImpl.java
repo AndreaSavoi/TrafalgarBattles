@@ -16,6 +16,8 @@ public class LogRegDAOImpl implements LogRegDAO {
 
     private PreparedStatement stmt;
 
+    public CurrentUser current;
+
     private void connVerify() throws IOException {
         if(conn == null) {
             DBconn.getDBConnection();
@@ -35,7 +37,7 @@ public class LogRegDAOImpl implements LogRegDAO {
         stmt.setString(2, password);
         ResultSet rs = stmt.executeQuery();
         if(rs.next()){
-            new CurrentUser(username);
+            current = new CurrentUser(username);
             return true;
         }
         return false;
@@ -57,5 +59,9 @@ public class LogRegDAOImpl implements LogRegDAO {
             return false;
         }
 
+    }
+
+    public CurrentUser getCurrUser() {
+        return current;
     }
 }
