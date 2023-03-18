@@ -35,8 +35,7 @@ public class LogRegDAOImpl implements LogRegDAO {
         stmt.setString(2, password);
         ResultSet rs = stmt.executeQuery();
         if(rs.next()){
-            CurrentUser current = new CurrentUser("");
-            current.setUsername(username);
+            CurrentUser.setUsername(username);
             return true;
         }
         return false;
