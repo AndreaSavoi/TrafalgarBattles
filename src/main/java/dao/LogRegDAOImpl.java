@@ -1,7 +1,7 @@
 package dao;
 
 import queries.Queries;
-import singleton.CurrentUser;
+import applicationcontrollers.CurrentUser;
 import singleton.DBconn;
 
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class LogRegDAOImpl implements LogRegDAO {
         stmt.setString(2, password);
         ResultSet rs = stmt.executeQuery();
         if(rs.next()){
-            CurrentUser.getInstace(username);
+            new CurrentUser(username);
             return true;
         }
         return false;
