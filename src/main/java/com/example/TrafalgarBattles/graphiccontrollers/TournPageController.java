@@ -35,7 +35,6 @@ public class TournPageController implements Initializable {
         visualizer.sceneVisualizer("LogRegForm.fxml", event);
     }
 
-
     public void goHome(MouseEvent event) throws SQLException {
         visualizer.sceneVisualizer("MainView.fxml", event);
     }

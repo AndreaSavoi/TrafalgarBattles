@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -52,7 +53,7 @@
                   <Font name="Century Gothic" size="29.0" />
                </font>
             </PasswordField>
-            <Label fx:id="login1" layoutX="600.0" layoutY="504.0" onMouseClicked="#signupVer" prefHeight="52.0" prefWidth="131.0" text="CONTINUE" textAlignment="CENTER">
+            <Label fx:id="login1" layoutX="605.0" layoutY="570.0" onMouseClicked="#signupVer" prefHeight="52.0" prefWidth="124.0" text="CONTINUE" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold Italic" size="24.0" />
                </font>
@@ -66,6 +67,11 @@
                   <Font name="Century Gothic" size="29.0" />
                </font>
             </TextField>
+            <CheckBox fx:id="checkRole" layoutX="583.0" layoutY="504.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="165.0" text="Organizer">
+               <font>
+                  <Font name="Century Gothic Bold" size="24.0" />
+               </font>
+            </CheckBox>
          </children>
       </Pane>
       <Pane layoutX="-5.0" layoutY="155.0" prefHeight="646.0" prefWidth="200.0" style="-fx-background-color: #f0e130;" />

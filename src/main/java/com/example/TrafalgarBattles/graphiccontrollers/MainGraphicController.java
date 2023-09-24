@@ -22,14 +22,16 @@ import java.util.ResourceBundle;
 
 public class MainGraphicController implements Initializable{
     @FXML
-    protected Label logReg;
+    protected Label logReg, teams, profile;
     private final VisualizeScene visualizer = VisualizeScene.getVisualizer(null);
     @FXML
     protected VBox tournaments;
     @FXML
-    public void show(MouseEvent event) {
-        visualizer.sceneVisualizer("LogRegForm.fxml", event);
-    }
+    public void show(MouseEvent event) { visualizer.sceneVisualizer("LogRegForm.fxml", event); }
+
+    @FXML
+    public void showprofile(MouseEvent event) { visualizer.sceneVisualizer("Profile.fxml", event);}
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
